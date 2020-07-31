@@ -1,4 +1,6 @@
 $(document).ready(function() {
+   hourUpdater()
+   
 // Get the the current date and time in the Nav
    const now = moment().format('MMMM Do YYYY, h:mm a') 
 
@@ -8,7 +10,7 @@ var $dateHeading = $("#navbar-date");
 // Referencing planner element 
    var $plannerDiv = $("#plannerContainer");
  // Clean slate (start with nothing)
-   $plannerDiv.empty();
+   // $plannerDiv.empty();
 
 for (var i = 9; i < 18; i++){
  // Build out rows (center)
@@ -17,7 +19,7 @@ for (var i = 9; i < 18; i++){
 
 // Timebox of row (left side)
    var timeDiv = $("<div>");
-   timeDiv.addClass("col-md-2");
+   timeDiv.addClass("col-md-2 timeDiv");
    timeDiv.css("background-color", "coral");
 
 // Determining AM or PM
@@ -37,50 +39,75 @@ for (var i = 9; i < 18; i++){
    timeDiv.text(showHour + " " + mornNight)
 // Setting up text input area for user
    var userInput = $("<textarea>");
-   userInput.addClass("col-md-9 user-input");
-   userInput.attr("id", i);
+   userInput.addClass("col-md-9 user-input number");
+   userInput.attr("number", i);
    userInput.css("background-color", "grey");
 
 // Save button of row (right side)
    var btnSave = $("<button>");
-   btnSave.addClass("col-md-1 save-btn");
-   btnSave.attr("id", i)
+   btnSave.addClass("col-md-1 save-btn name");
+   btnSave.attr("name", i)
    btnSave.css("background-color", "cornflowerblue");
+   btnSave.text("Save");
 // Adding them all to the page
    $tableRow.append(timeDiv, userInput, btnSave)
    $('#formPlanner').append($tableRow)
    //console.log($tableRow, timeDiv, btnSave)
 
 }
-var todos = [];
-// On Click for Save button
-$('.save-btn').on('click', function(e){
-   e.preventDefault();
-   
-   $('.user-input').each(function() {
-      var time = ($(this).attr('number'));
-      var userTask = $(this).val();
-      // console.log(time)
-      // console.log(userTask)
-      // console.log(time);
-// Set localStorage
-      localStorage.setItem("text",time, userTask);
-// Get localStorage
-      $("user-input").val(localStorage.getItem("text" ));
-      console.log($(userTask))
+$('.number').each(function() {
+   var time = ($(this).attr('number'));
+   var userTask = $(this).val();
+
+   // On Click for Save button
+   $('.save-btn').on('click', function(e){
+      e.preventDefault();
       
-      // $("col-md-9 user-input").val(localStorage.getItem("hour-10"));
-      // $("#hour-11 .description").val(localStorage.getItem("hour-11"));
-      // $("#hour-12 .description").val(localStorage.getItem("hour-12"));
-      // $("#hour-13 .description").val(localStorage.getItem("hour-13"));
-      // $("#hour-14 .description").val(localStorage.getItem("hour-14"));
-      // $("#hour-15 .description").val(localStorage.getItem("hour-15"));
-      // $("#hour-16 .description").val(localStorage.getItem("hour-16"));
-      // $("#hour-17 .description").val(localStorage.getItem("hour-17"));
+      $('.user-input').each(function() {
+         var time = ($(this).attr('number'));
+         // var userTask = $(this).val();
+         // console.log(time)
+         // console.log(userTask)
+         
+         emptyArr = [];
+         storageObj = {
+            currentHour: time ,
+            userVal: userTask,
+         }
+         // Set localStorage
+         emptyArr.push(storageObj)
+         localStorage.setItem(time, JSON.stringify(emptyArr));
+         
+      })
+   });
+   // Get localStorage
+   localStorage.getItem(JSON.stringify(userTask))
+   // console.log(time)
+   // console.log(userTask)
 })
-})
+function hourUpdater() {
+   // get current number of hours
+   var currentHour = moment().hours();
 
+   $(".col-md-9").each(function() {
+   var timeBlock = parseInt($(this).attr("number"));
 
+     // check to see if past
+   if (timeBlock < currentHour) {
+      $(".col-md-9").addClass("past");
+   } 
+   else if (timeBlock === currentHour) {
+      $(".col-md-9").removeClass("past");
+      $(".col-md-9").addClass("present");
+   } 
+   else {
+      $(".col-md-9").removeClass("past");
+      $(".col-md-9").removeClass("present");
+      $(".col-md-9").addClass("future");
+   }
+   console.log(".col-md-9")
+});
+}
 
 
 })

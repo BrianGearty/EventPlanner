@@ -2,11 +2,13 @@ body {
   font-family: 'Open Sans', sans-serif;
   font-size: 16px;
   line-height: 1;
+  background-image: url('/Users/briangearty/EventPlanner/Assets/underwater.jpg');
 }
 
 .jumbotron {
   padding: 10px;
   border-bottom: 2px groove black;
+  background-color: blanchedalmond;
 } 
 
 .display-3 {
@@ -20,54 +22,52 @@ body {
   text-align: center;
 }
 
-.description{
-  white-space: pre-wrap;
-}
-
-
 .row {
   white-space: pre-wrap;
   height: 80px;
   border-top: 1px solid white;;
 }
 
-.hour {
-  background-color: #ffffff;
-  color: #000000;
-  border-top: 1px dashed #000000;
-}
-
 .past {
   background-color:grey;
-  color: white;
 }
 
 .present {
-  background-color: #ff6961;
-  color: white;
+  background-color: red;
+  
 }
 
 .future {
-  background-color: #77dd77;
-  color: white;
+  background-color: green;
+  
 }
 
-.saveBtn {
-  border-left: 1px solid black;
+.save-btn {
+  border: 1px solid black;
   border-top-right-radius: 15px;
   border-bottom-right-radius: 15px;
   background-color: #06AED5;
-  color: white;
+  color:black;
+}
+.timeDiv {
+  background-color: coral;
+  border: 1px solid black;
+  border-top-left-radius: 15px;
+  border-bottom-left-radius: 15px;
+  color:black;
+  text-align: center;
+  padding-top: 30px;
 }
 
 .container-all {
   height: 85%;
-  width: 85%;
+  width: 75%;
   border: 5px groove black;
   margin: auto;
   padding: 25px;
   background-color: blanchedalmond;
 }
+
 
 
 .footer {
