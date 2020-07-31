@@ -1,0 +1,76 @@
+body {
+  font-family: 'Open Sans', sans-serif;
+  font-size: 16px;
+  line-height: 1;
+}
+
+.jumbotron {
+  padding: 10px;
+  border-bottom: 2px groove black;
+} 
+
+.display-3 {
+  font-size: 50px;
+  color:black;
+  text-align: center;
+}
+#navbar-date {
+  font-size: 20px;
+  color:black;
+  text-align: center;
+}
+
+.description{
+  white-space: pre-wrap;
+}
+
+
+.row {
+  white-space: pre-wrap;
+  height: 80px;
+  border-top: 1px solid white;;
+}
+
+.hour {
+  background-color: #ffffff;
+  color: #000000;
+  border-top: 1px dashed #000000;
+}
+
+.past {
+  background-color:grey;
+  color: white;
+}
+
+.present {
+  background-color: #ff6961;
+  color: white;
+}
+
+.future {
+  background-color: #77dd77;
+  color: white;
+}
+
+.saveBtn {
+  border-left: 1px solid black;
+  border-top-right-radius: 15px;
+  border-bottom-right-radius: 15px;
+  background-color: #06AED5;
+  color: white;
+}
+
+.container-all {
+  height: 85%;
+  width: 85%;
+  border: 5px groove black;
+  margin: auto;
+  padding: 25px;
+  background-color: blanchedalmond;
+}
+
+
+.footer {
+  text-align: center;
+
+}
